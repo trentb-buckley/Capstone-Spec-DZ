@@ -1,0 +1,77 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+#register-comp {
+    display: none;
+    text-align: center;
+}
+#login-comp {
+    text-align: center;
+}
+#dashboard-comp {
+    display: none;
+    
+}
+.flight-nums {
+    display: flex;
+    /* background-color: aqua; */
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.disc-card {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    box-shadow: 10px 10px 10px #555555,
+    0 0 5px #555555;
+    align-items: center;
+    background-image: linear-gradient(to right, orange, yellow 100px, orange 200px);
+    background-size: 100% 100%;
+    background-position: 50% 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.flight-num {
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border: 1px solid black;
+}
+.add-to-bag-btn {
+    height: 40px;
+    width: 80px;
+    border-radius: 60px;
+    background: none;
+}
+.disc-container {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    height: 400px;
+    flex-wrap: wrap;
+}
+header {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.log-out-btn {
+    position: absolute;
+    left: 10vw;
+    
+}
