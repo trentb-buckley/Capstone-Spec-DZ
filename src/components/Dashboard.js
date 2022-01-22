@@ -127,12 +127,12 @@ function Dashboard() {
   return (<div id="dashboard-comp">
       <header className="dashboard-header">
       
-      <button className="dashboard-buttons get-all-discs"  onClick={getAllDiscs}>Get All Discs</button>
-      <button className="dashboard-buttons get-all-drivers"  onClick={getAllDrivers}>Sort By Drivers</button>
-      <button className="dashboard-buttons get-all-fairways"  onClick={getAllFairways}>Sort By Fairways</button>
-      <button className="dashboard-buttons get-all-midranges"  onClick={getAllMidranges}>Sort By Midranges</button>
-      <button className="dashboard-buttons get-all-putters"  onClick={getAllPutters}>Sort By Putters</button>
-      <button className="log-out-btn" onClick={logOut}>Log Out</button>
+      <button id="dashboard-buttons"  onClick={getAllDiscs}>Get All Discs</button>
+      <button id="dashboard-buttons"  onClick={getAllDrivers}>Sort By Drivers</button>
+      <button id="dashboard-buttons"  onClick={getAllFairways}>Sort By Fairways</button>
+      <button id="dashboard-buttons"  onClick={getAllMidranges}>Sort By Midranges</button>
+      <button id="dashboard-buttons"  onClick={getAllPutters}>Sort By Putters</button>
+      <button id="log-out-btn" onClick={logOut}>Log Out</button>
 
       </header>
       <div className="disc-container">{discsMapped}</div>
