@@ -2,15 +2,34 @@
 * {
     margin: 0;
     padding: 0;
+    background-color: #333333;
+    color: #959595;
 }
-
+button {
+    height: 80px;
+    width: 120px;
+    background-color: red;
+    color: #333333;
+    font-size: 25px;
+    transition: .15s;
+    border-radius: 15px;
+}
+button:hover {
+    transform: scale(1.05,1.05)
+}
 
 #register-comp {
     display: none;
     text-align: center;
+    
 }
 #login-comp {
     text-align: center;
+    background-color: #333333;
+    width: 100vw;
+    height: 100vw;
+    color: #959595;
+    
 }
 #dashboard-comp {
     display: none;
@@ -25,15 +44,15 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    background: none;
 }
 .disc-card {
     height: 200px;
     width: 200px;
     border-radius: 50%;
-    box-shadow: 10px 10px 10px #555555,
-    0 0 5px #555555;
+    
     align-items: center;
-    background-image: linear-gradient(to right, orange, yellow 100px, orange 200px);
+    background-image: linear-gradient(to right, blue, lightgreen 100px, yellow 200px);
     background-size: 100% 100%;
     background-position: 50% 100%;
     background-repeat: no-repeat;
@@ -41,7 +60,35 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    /* margin: 25px; */
+    transition: .5s;
+    /* overflow: hidden; */
+}
+.disc-card-shadow {
+    height: 200px;
+    width: 200px;
+    /* border-radius: 100px; */
+    box-shadow: 10px 10px 10px black,
+    0 0 5px black;
     margin: 25px;
+    background: none;
+    z-index: 999;
+    background-color: black;
+    border-radius: 100%;
+}
+.no-background {
+    height: 200px;
+    width: 200px;
+    background: none;
+    overflow: hidden;
+    border-radius: 100px;
+}
+/* .disc-card-shadow:hover{
+    transform: rotatez(90deg);
+} */
+.disc-card:hover {
+    transform: rotatez(360deg);
+    /* transform: rotate3d(1, 10, 20, 360deg); */
 }
 .flight-num {
     border-radius: 50%;
@@ -50,12 +97,16 @@
     margin-left: 2px;
     margin-right: 2px;
     border: 1px solid black;
+    background: none;
+    color: black;
 }
 .add-to-bag-btn {
     height: 40px;
     width: 80px;
     border-radius: 60px;
     background: none;
+    color: black;
+    font-size: 15px;
 }
 .disc-container {
     width: 100vw;
@@ -63,6 +114,12 @@
     flex-direction: row;
     height: 400px;
     flex-wrap: wrap;
+}
+.brand, .name {
+    background: none;
+    color: black;
+    font-size: 25px;
+    font-style: italic;
 }
 header {
     height: 100px;
@@ -77,9 +134,73 @@ header {
     
 }
 #dashboard-buttons {
-    height: 40px;
+    height: 80px;
     border-radius: 5px;
     background-color: #898989;
     font-size: larger;
     margin: 25px;
+    background-color: red;
+    color: #333333;
 }
+
+.title {
+    font-size: 100px;
+    color: red;
+    margin-bottom: 100px;
+}
+
+.login-form {
+    height: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.register-form {
+    height: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+input {
+    width: 250px;
+    margin: 10px;
+    height: 50px;
+    width: 250px;
+    font-size: 40px;
+}
+.menu-btn {
+    height: 50px;
+    width: 80px;
+    background-color: red;
+    color: #333333;
+}
+
+.header-comp {
+    display: flex;
+    width: 100vw ;
+    align-items: center;
+    justify-content: center;
+    margin:100px;
+}
+.go-to-login,.go-to-register {
+    margin: 10px;
+}
+.shiny {
+    z-index: 99;
+    height: 400px;
+    width: 50px;
+    background-color: white;
+    /* opacity: 50%; */
+    position: relative;
+    /* transform: rotatez(45deg); */
+    left: 250px;
+    bottom: 250px;
+    transition: 1.25s;
+    pointer-events: none;
+}
+
+
+

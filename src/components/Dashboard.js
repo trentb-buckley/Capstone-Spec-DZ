@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 // import {useFormik} from 'formik'
 import axios from 'axios';
 import './components.css';
+import Header from './Header'
 // const sequelize = require('../server/index')
 
 function Dashboard() {
@@ -55,7 +56,7 @@ function Dashboard() {
 
     }
     const getRandomDisc = () => {
-        axios.get('http://localhost:4000/putters')
+        axios.get('http://localhost:4000/random')
         .then((res)=>{
             setBag(res.data)
         })
@@ -102,11 +103,50 @@ function Dashboard() {
             </div>
         )
     })
-    let discsMapped = discs.map(disc => {
+    let discsMapped = discs.map((disc, i) => {
         return (
-        <div >
-            <div >
-            <div className="disc-card">
+            <div className='disc-card-shadow'>
+        <div className='no-background'>
+            <div className='no-background' >
+            <div onMouseEnter={()=>{
+                // console.log('mouse entered')
+                // document.querySelector(`.shiny${i}`).style.transform = 'rotatez(45deg)translate(-500px)'
+               let discs = document.querySelectorAll('.shiny')
+               discs.forEach((item)=>{
+                   item.style.transform = 'rotatez(45deg)translate(-500px)'
+               })
+               
+                // colorOptions.forEach((item) => {
+                //     colorOption.style.backgroundColor = item;
+                //     optionsArray.push(colorOption);
+                //   });
+                // let shiny = document.querySelectorAll('#shiny')
+                // shiny.forEach((item, index)=>{
+                //     let clas = item;
+                //     console.log(item)
+                //     document.querySelector((`.shiny${index}`).toString()).style.transform = 'rotatez(45deg)translate(-500px)'
+                //     // let uniqueItem = document.querySelector(`shiny${index}`)
+                //     // let uniqueItem = `${item}+${index}`
+                // })
+                // shiny.style.transform = 'rotatez(45deg)translate(-500px)'
+                
+            }} onMouseLeave={()=>{
+                let discs = document.querySelectorAll('.shiny')
+               discs.forEach((item)=>{
+                   item.style.transform = 'rotatez(45deg)translate(500px)'
+               })
+                // console.log('mouse left')
+                // document.querySelector(`.shiny${i}`).style.transform = 'rotatez(45deg)translate(500px)'
+                // let shiny = document.querySelectorAll('#shiny')
+                // shiny.forEach((item, index)=>{
+                //     let clas = item;
+                //     console.log(item)
+                //     document.querySelector((`.shiny${index}`).toString()).style.transform = 'rotatez(45deg)translate(500px)'
+                //     // let uniqueItem = `${item}+${index}`
+                //     // let uniqueItem = document.querySelector(`shiny${index}`)
+                // })
+                // shiny.style.transform = 'rotatez(45deg)translate(500px)'
+            }} className="disc-card">
             <p className="brand">{disc.brand}</p>
             <p className="name">{disc.name}</p>
             <div className="flight-nums">
@@ -117,6 +157,8 @@ function Dashboard() {
             </div>
             <button className="add-to-bag-btn" onClick={addToBag}>Add To Bag</button>
         </div>
+            <div id="shiny" className='shiny'></div>
+        </div>
         </div>
 
 
@@ -125,6 +167,7 @@ function Dashboard() {
    
     // console.log(discsMapped)
   return (<div id="dashboard-comp">
+      <Header className="dashboard-header" />
       <header className="dashboard-header">
       
       <button id="dashboard-buttons"  onClick={getAllDiscs}>Get All Discs</button>

@@ -2,6 +2,7 @@ import React from 'react';
 import {useFormik} from 'formik'
 import axios from 'axios';
 import './components.css';
+import Header from './Header'
 
 function Register() {
   const initialValues = {
@@ -48,8 +49,9 @@ function Register() {
   })
 
   return <div id="register-comp">
+    <Header />
     <h2>Register</h2>
-    <form onSubmit={formik.handleSubmit}>
+    <form className='register-form' onSubmit={formik.handleSubmit}>
       <input
         type="text"
         name="name"
@@ -76,23 +78,25 @@ function Register() {
         name="confirmPassword"
         onChange={formik.handleChange}
         value={formik.values.confirmPassword}
-        placeholder='Confirm Password'
+        placeholder='Confirm ▲'
         />
-        <button type='submit' disabled={!formik.isValid}>Submit</button>
-    </form>
-    <button className="go-to-login" onClick={()=>{
-        let login = document.getElementById('login-comp')
-        login.style.display='unset'
-        
-        let register = document.getElementById('register-comp')
-        register.style.display = 'none'
-    }}>Go to Login</button>
     <div>
       {formik.errors.username ? <div>{formik.errors.username}</div> : null}
       {formik.errors.name ? <div>{formik.errors.name}</div> : null}
       {formik.errors.password ? <div>{formik.errors.password}</div> : null}
       {formik.errors.confirmPassword ? <div>{formik.errors.confirmPassword}</div> : null}
     </div>
+        <button type='submit' disabled={!formik.isValid}>Submit</button>
+    <button className="menu-btn" className="go-to-login" onClick={()=>{
+        let login = document.getElementById('login-comp')
+        login.style.display='unset'
+        let dashboard = document.getElementById('dashboard-comp')
+    dashboard.style.display = 'none'
+        
+        let register = document.getElementById('register-comp')
+        register.style.display = 'none'
+    }}>Go to Login</button>
+    </form>
   </div>;
 }
 
