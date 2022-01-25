@@ -47,17 +47,31 @@ app.use(cors());
 //     //     res.status(200).send(myBag)
 //     // }
 // })
+// let colors = {`
+// Innova drivers = linear-gradient(to right, blue, lightgreen 100px, yellow 200px)
+// Innova fairways = linear-gradient(to right, blue, cyan 100px, blue 200px)
+// Innova midranges linear-gradient(to right, green, orange 100px, blue 200px)
+// Innova Putters = linear-gradient(to right, skyblue, cyan 100px, skyblue 200px)
+
+// Discraft drivers = linear-gradient(to right, purple, yellow 100px, red 200px)
+// Discraft fairways = linear-gradient(to bottom, yellow, cyan 100px, white 200px)
+// Discraft midranges = linear-gradient(to bottom, yellow, teal 100px, green 200px)
+// Discraft Putters = linear-gradient(to bottom, orange, yellow 100px, red 200px)
+// `}
 
 app.get('/discs', async (req, res) => {
     let discs = await sequelize.query(`
         select * from discs
+        order by name asc
     `)
+    
     res.status(200).send(discs[0]);
 })
 app.get('/drivers', async (req, res) => {
     let discs = await sequelize.query(`
         select * from discs
         where driver = true
+        
     `)
     res.status(200).send(discs[0]);
 })
@@ -81,6 +95,21 @@ app.get('/putters', async (req, res) => {
         where putter = true
     `)
     res.status(200).send(discs[0]);
+})
+app.put('.addtobag', async (req, res) =>{
+    sequelize.query(`
+        update discs
+        set mybag = true 
+        where id = ${id}
+    `)
+    r
+})
+app.get('/mybag', async (req,res) => {
+    let myBag = await sequelize.query(`
+        select * from discs
+        where mybag = true
+    `)
+    res.status(200).send(myBag[0]);
 })
 app.post('/register', async (req, res) => {
     const {username, name, password} = req.body

@@ -61,7 +61,7 @@ button:hover {
     align-items: center;
     justify-content: space-evenly;
     /* margin: 25px; */
-    transition: .5s;
+    transition: .25s;
     /* overflow: hidden; */
 }
 .disc-card-shadow {
@@ -75,6 +75,7 @@ button:hover {
     z-index: 999;
     background-color: black;
     border-radius: 100%;
+    transition: .25s;
 }
 .no-background {
     height: 200px;
@@ -82,14 +83,26 @@ button:hover {
     background: none;
     overflow: hidden;
     border-radius: 100px;
+    transition: .25s;
 }
 /* .disc-card-shadow:hover{
     transform: rotatez(90deg);
 } */
 .disc-card:hover {
-    transform: rotatez(360deg);
+    /* transform: rotatez(360deg); */
+    transform: scale(1.025,1.025)
+    
+    
     /* transform: rotate3d(1, 10, 20, 360deg); */
 }
+.no-background:hover {
+    transform: scale(1.025,1.025)
+}
+.disc-card-shadow:hover {
+    transform: scale(1.025,1.025)
+}
+
+
 .flight-num {
     border-radius: 50%;
     height: 20px;
@@ -128,9 +141,12 @@ header {
     align-items: center;
     justify-content: center;
 }
-.log-out-btn {
+#log-out-btn {
+    height: 40px;
+
     position: absolute;
-    left: 10vw;
+    left: 10px;
+    top: 10px;
     
 }
 #dashboard-buttons {
@@ -188,19 +204,33 @@ input {
 .go-to-login,.go-to-register {
     margin: 10px;
 }
-.shiny {
+
+
+#shiny {
     z-index: 99;
     height: 400px;
-    width: 50px;
+    width: 150px;
     background-color: white;
-    /* opacity: 50%; */
+    opacity: 40%;
     position: relative;
     /* transform: rotatez(45deg); */
     left: 250px;
-    bottom: 250px;
+    bottom: 215px;
     transition: 1.25s;
     pointer-events: none;
+    
+    animation-delay: 1s;
+    transform: rotatez(45deg)translate(-500px)
+    
 }
-
-
-
+.dashboard-container {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    right: 0;
+    top: 0;
+}
+body {
+    background-image: linear-gradient(red, white);
+}

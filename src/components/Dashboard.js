@@ -13,7 +13,8 @@ function Dashboard() {
     //   }
     
     let [discs, setDiscs] = useState([])
-    let [bag, setBag] = useState([])
+    // let [bag, setBag] = useState([])
+
 
     const getAllDiscs = ()=>{
         axios.get('http://localhost:4000/discs')
@@ -55,12 +56,22 @@ function Dashboard() {
 
 
     }
-    const getRandomDisc = () => {
-        axios.get('http://localhost:4000/random')
-        .then((res)=>{
-            setBag(res.data)
+//     const addToBag = () =>{
+//         let discId = disc.id
+// axios.put('http://localhost:4000/addtobag', {discId})
+// }
+    const myBag = ()=>{
+        axios.get('http://localhost:4000/mybag')
+        .then((res) => {
+            setDiscs(res.data)
         })
     }
+    // const getRandomDisc = () => {
+    //     axios.get('http://localhost:4000/random')
+    //     .then((res)=>{
+    //         setBag(res.data)
+    //     })
+    // }
     
 
     const logOut = () => {
@@ -71,95 +82,111 @@ function Dashboard() {
     let emptyInput = document.getElementById('empty-input')
     emptyInput.innerHTML = ''
     }
-    const addToBag = () => {
-        // axios.post('http://localhost:4000/addtobag')
-        // .then((res)=>{
-        //     console.log(res.data)
-        //     localStorage.setItem('id', res.data[0][0].id)
-        // })
-        // .catch((err) => console.log(err.response.data))
-    }
-    const removeFromBag = () => {
-
-    }
     
-    let bagMapped = bag.map(bag => {
-        return(
-            <div>
-                <div >
-            <div className="disc-card">
-            <p className="brand">{bag.brand}</p>
-            <p className="name">{bag.name}</p>
-            <div className="flight-nums">
-            <p className="flight-num">{bag.speed}</p>
-            <p className="flight-num">{bag.glide}</p>
-            <p className="flight-num">{bag.turn}</p>
-            <p className="flight-num">{bag.fade}</p>
-            </div>
-            <button className="remove-from-bag-btn" onClick={removeFromBag}>Remove From Bag</button>
-        </div>
-        </div>
+    
+    
+    // let bagMapped = bag.map(bag => {
+    //     return(
+    //         <div>
+    //             <div >
+    //         <div className="disc-card">
+    //         <p className="brand">{bag.brand}</p>
+    //         <p className="name">{bag.name}</p>
+    //         <div className="flight-nums">
+    //         <p className="flight-num">{bag.speed}</p>
+    //         <p className="flight-num">{bag.glide}</p>
+    //         <p className="flight-num">{bag.turn}</p>
+    //         <p className="flight-num">{bag.fade}</p>
+    //         </div>
+    //         <button className="remove-from-bag-btn" onClick={removeFromBag}>Remove From Bag</button>
+    //     </div>
+    //     </div>
 
-            </div>
-        )
+    //         </div>
+    //     )
+    // })
+   const shineAfterEffect = () => {
+    let discs = document.querySelectorAll('#shiny')
+    discs.forEach((item)=>{
+        item.style.transform = 'rotatez(45deg)translate(500px)'
+        
+
     })
+   }
+    const shineEffect = () => {
+        let discs = document.querySelectorAll('#shiny')
+        discs.forEach((item)=>{
+            item.style.transform = 'rotatez(45deg)translate(-500px)'
+            setTimeout(shineAfterEffect, 2500)
+            // shineEffect()
+
+        })
+    }
+    // let clicked = false;
+    
+    // const toggleDiscCard = () =>{
+    //     if(clicked) {
+    //         let discCard = document.querySelectorAll('.disc-card')
+    //         discCard.forEach((item)=>{
+    //             item.style.height = '250px'
+    //             item.style.width = '250px'
+    //         })
+    //         let discCardShadow = document.querySelectorAll('.disc-card-shadow')
+    //         discCardShadow.forEach((item)=>{
+    //             item.style.height = '250px'
+    //             item.style.width = '250px'
+    //         })
+    //         let noBackground = document.querySelectorAll('.no-background')
+    //         discCard.forEach((item)=>{
+    //             item.style.height = '250px'
+    //             item.style.width = '250px'
+    //         })
+            
+            
+    //         clicked = false
+    //     }else {
+    //         let discCard = document.querySelectorAll('.disc-card')
+    //         discCard.forEach((item)=>{
+    //             item.style.height = '200px'
+    //             item.style.width = '200px'
+    //         })
+    //         let discCard = document.querySelector('.disc-card')
+    //         discCard.style.height = '200px'
+    //         discCard.style.width = '200px'
+    //         let discCardShadow = document.querySelector('.disc-card-shadow')
+    //         discCard.style.height = '200px'
+    //         discCard.style.width = '200px'
+    //         let noBackground = document.querySelector('.no-background')
+    //         discCard.style.height = '200px'
+    //         discCard.style.width = '200px'
+    //         clicked = true
+    //     }
+    // }
+    
+    
     let discsMapped = discs.map((disc, i) => {
+        let styles = {
+            backgroundImage: disc.color
+        }
         return (
             <div className='disc-card-shadow'>
-        <div className='no-background'>
+        
             <div className='no-background' >
-            <div onMouseEnter={()=>{
-                // console.log('mouse entered')
-                // document.querySelector(`.shiny${i}`).style.transform = 'rotatez(45deg)translate(-500px)'
-               let discs = document.querySelectorAll('.shiny')
-               discs.forEach((item)=>{
-                   item.style.transform = 'rotatez(45deg)translate(-500px)'
-               })
-               
-                // colorOptions.forEach((item) => {
-                //     colorOption.style.backgroundColor = item;
-                //     optionsArray.push(colorOption);
-                //   });
-                // let shiny = document.querySelectorAll('#shiny')
-                // shiny.forEach((item, index)=>{
-                //     let clas = item;
-                //     console.log(item)
-                //     document.querySelector((`.shiny${index}`).toString()).style.transform = 'rotatez(45deg)translate(-500px)'
-                //     // let uniqueItem = document.querySelector(`shiny${index}`)
-                //     // let uniqueItem = `${item}+${index}`
-                // })
-                // shiny.style.transform = 'rotatez(45deg)translate(-500px)'
-                
-            }} onMouseLeave={()=>{
-                let discs = document.querySelectorAll('.shiny')
-               discs.forEach((item)=>{
-                   item.style.transform = 'rotatez(45deg)translate(500px)'
-               })
-                // console.log('mouse left')
-                // document.querySelector(`.shiny${i}`).style.transform = 'rotatez(45deg)translate(500px)'
-                // let shiny = document.querySelectorAll('#shiny')
-                // shiny.forEach((item, index)=>{
-                //     let clas = item;
-                //     console.log(item)
-                //     document.querySelector((`.shiny${index}`).toString()).style.transform = 'rotatez(45deg)translate(500px)'
-                //     // let uniqueItem = `${item}+${index}`
-                //     // let uniqueItem = document.querySelector(`shiny${index}`)
-                // })
-                // shiny.style.transform = 'rotatez(45deg)translate(500px)'
-            }} className="disc-card">
+            <div onLoad={setTimeout(shineEffect,2500)} className="disc-card" style={styles}>
             <p className="brand">{disc.brand}</p>
             <p className="name">{disc.name}</p>
             <div className="flight-nums">
+                
             <p className="flight-num">{disc.speed}</p>
             <p className="flight-num">{disc.glide}</p>
             <p className="flight-num">{disc.turn}</p>
             <p className="flight-num">{disc.fade}</p>
             </div>
-            <button className="add-to-bag-btn" onClick={addToBag}>Add To Bag</button>
+            <button className="add-to-bag-btn" >Add To Bag</button>
         </div>
-            <div id="shiny" className='shiny'></div>
+            <div  id="shiny" className={`shiny${i}`} ></div>
         </div>
-        </div>
+        
 
 
         </div>)
@@ -168,18 +195,20 @@ function Dashboard() {
     // console.log(discsMapped)
   return (<div id="dashboard-comp">
       <Header className="dashboard-header" />
-      <header className="dashboard-header">
       
+      <button id="log-out-btn" onClick={logOut}>Log Out</button>
+
+      
+      <div className='dashboard-container'>
       <button id="dashboard-buttons"  onClick={getAllDiscs}>Get All Discs</button>
       <button id="dashboard-buttons"  onClick={getAllDrivers}>Sort By Drivers</button>
       <button id="dashboard-buttons"  onClick={getAllFairways}>Sort By Fairways</button>
       <button id="dashboard-buttons"  onClick={getAllMidranges}>Sort By Midranges</button>
       <button id="dashboard-buttons"  onClick={getAllPutters}>Sort By Putters</button>
-      <button id="log-out-btn" onClick={logOut}>Log Out</button>
-
-      </header>
+      <button id="dashboard-buttons" onClick={myBag}>My Bag</button>
+      </div>
       <div className="disc-container">{discsMapped}</div>
-      <div className="bag-container">{bagMapped}</div>
+      {/* <div className="bag-container">{bagMapped}</div> */}
       
   </div>);
 }
