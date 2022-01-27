@@ -13,7 +13,7 @@ function Dashboard() {
     //   }
     
     let [discs, setDiscs] = useState([])
-    // let [bag, setBag] = useState([])
+    let [bag, setBag] = useState([])
 
 
     const getAllDiscs = ()=>{
@@ -56,14 +56,31 @@ function Dashboard() {
 
 
     }
-//     const addToBag = () =>{
-//         let discId = disc.id
-// axios.put('http://localhost:4000/addtobag', {discId})
-// }
+    const getRandomDisc = () =>{
+        axios.get('http://localhost:4000/random')
+        .then((res)=>{
+            let items = res.data
+            
+            let ranDisc = items[Math.floor(Math.random()*items.length)]
+            console.log(ranDisc)
+            let itemArr = [ranDisc]
+            setDiscs(itemArr)
+        })
+    }
+    const addToBag = (discId) =>{
+    
+axios.put('http://localhost:4000/addtobag', {discId})
+        .then((res)=>{
+
+            // myBag()
+
+        })
+}
     const myBag = ()=>{
         axios.get('http://localhost:4000/mybag')
         .then((res) => {
             setDiscs(res.data)
+
         })
     }
     // const getRandomDisc = () => {
@@ -182,7 +199,9 @@ function Dashboard() {
             <p className="flight-num">{disc.turn}</p>
             <p className="flight-num">{disc.fade}</p>
             </div>
-            <button className="add-to-bag-btn" >Add To Bag</button>
+            <button onClick={()=>{
+                addToBag(disc.id)
+            }} className="add-to-bag-btn" >Add To Bag</button>
         </div>
             <div  id="shiny" className={`shiny${i}`} ></div>
         </div>
@@ -206,6 +225,7 @@ function Dashboard() {
       <button id="dashboard-buttons"  onClick={getAllMidranges}>Sort By Midranges</button>
       <button id="dashboard-buttons"  onClick={getAllPutters}>Sort By Putters</button>
       <button id="dashboard-buttons" onClick={myBag}>My Bag</button>
+      <button id="dashboard-buttons" onClick={getRandomDisc}>Get Random Disc</button>
       </div>
       <div className="disc-container">{discsMapped}</div>
       {/* <div className="bag-container">{bagMapped}</div> */}

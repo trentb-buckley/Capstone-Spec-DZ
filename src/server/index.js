@@ -67,6 +67,14 @@ app.get('/discs', async (req, res) => {
     
     res.status(200).send(discs[0]);
 })
+app.get('/random', async (req, res) => {
+    let discs = await sequelize.query(`
+        select * from discs
+        
+    `)
+    
+    res.status(200).send(discs[0]);
+})
 app.get('/drivers', async (req, res) => {
     let discs = await sequelize.query(`
         select * from discs
@@ -96,13 +104,15 @@ app.get('/putters', async (req, res) => {
     `)
     res.status(200).send(discs[0]);
 })
-app.put('.addtobag', async (req, res) =>{
+app.put('/addtobag', async (req, res) =>{
+    let discId = req.body.discId
     sequelize.query(`
         update discs
         set mybag = true 
-        where id = ${id}
+        where id = ${discId}
     `)
-    r
+    res.sendStatus(200)
+    
 })
 app.get('/mybag', async (req,res) => {
     let myBag = await sequelize.query(`
@@ -157,6 +167,7 @@ app.post('/login', async (req, res) => {
     } else {
       res.status(401).send('Username is Incorrect')
     }
+
   })
 
 // sequelize.authenticate()
