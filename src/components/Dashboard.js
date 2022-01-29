@@ -1,22 +1,28 @@
 import React, {useState} from 'react';
-// import {useFormik} from 'formik'
 import axios from 'axios';
 import './components.css';
 import Header from './Header'
-// const sequelize = require('../server/index')
+
 
 function Dashboard() {
 
-    // const initialValues = {
-    //     id: ""
-    
-    //   }
-    
     let [discs, setDiscs] = useState([])
-    let [bag, setBag] = useState([])
-
-
+    
+    const clickOff = () =>{
+        document.querySelector('.all-drop-down-container').style.display = 'none'
+        document.querySelector('.all-drop-down').style.display = 'unset'
+        document.querySelector('.innova-drop-down-container').style.display = 'none'
+        document.querySelector('.innova-drop-down').style.display = 'unset'
+        document.querySelector('.discraft-drop-down-container').style.display = 'none'
+        document.querySelector('.discraft-drop-down').style.display = 'unset'
+        document.querySelector('.discmania-drop-down-container').style.display = 'none'
+        document.querySelector('.discmania-drop-down').style.display = 'unset'
+        document.querySelector('.westside-drop-down-container').style.display = 'none'
+        document.querySelector('.westside-drop-down').style.display = 'unset'
+    }
     const getAllDiscs = ()=>{
+        document.querySelector('.all-drop-down-container').style.display = 'none'
+        document.querySelector('.all-drop-down').style.display = 'unset'
         axios.get('http://localhost:4000/discs')
         .then((res)=>{
             setDiscs(res.data)
@@ -25,6 +31,8 @@ function Dashboard() {
 
     }
     const getAllDrivers = ()=>{
+        document.querySelector('.all-drop-down-container').style.display = 'none'
+        document.querySelector('.all-drop-down').style.display = 'unset'
         axios.get('http://localhost:4000/drivers')
         .then((res)=>{
             setDiscs(res.data)
@@ -33,6 +41,8 @@ function Dashboard() {
 
     }
     const getAllFairways = ()=>{
+        document.querySelector('.all-drop-down-container').style.display = 'none'
+        document.querySelector('.all-drop-down').style.display = 'unset'
         axios.get('http://localhost:4000/fairways')
         .then((res)=>{
             setDiscs(res.data)
@@ -41,6 +51,8 @@ function Dashboard() {
 
     }
     const getAllMidranges = ()=>{
+        document.querySelector('.all-drop-down-container').style.display = 'none'
+        document.querySelector('.all-drop-down').style.display = 'unset'
         axios.get('http://localhost:4000/midranges')
         .then((res)=>{
             setDiscs(res.data)
@@ -49,6 +61,8 @@ function Dashboard() {
 
     }
     const getAllPutters = ()=>{
+        document.querySelector('.all-drop-down-container').style.display = 'none'
+        document.querySelector('.all-drop-down').style.display = 'unset'
         axios.get('http://localhost:4000/putters')
         .then((res)=>{
             setDiscs(res.data)
@@ -67,6 +81,9 @@ function Dashboard() {
             setDiscs(itemArr)
         })
     }
+    const clearDiscs = () =>{
+        setDiscs([])
+    }
     const addToBag = (discId) =>{
     
 axios.put('http://localhost:4000/addtobag', {discId})
@@ -83,12 +100,170 @@ axios.put('http://localhost:4000/addtobag', {discId})
 
         })
     }
-    // const getRandomDisc = () => {
-    //     axios.get('http://localhost:4000/random')
-    //     .then((res)=>{
-    //         setBag(res.data)
-    //     })
-    // }
+    //Innova drop down
+    const getAllInnovaDiscs = () => {
+        document.querySelector('.innova-drop-down-container').style.display = 'none'
+        document.querySelector('.innova-drop-down').style.display = 'unset'
+        axios.get('http://localhost:4000/get-all-innova-discs')
+            .then((res)=>{
+                setDiscs(res.data)
+            })
+    }
+    const getAllInnovaDrivers = () => {
+        document.querySelector('.innova-drop-down-container').style.display = 'none'
+        document.querySelector('.innova-drop-down').style.display = 'unset'
+        axios.get('http://localhost:4000/get-all-innova-drivers')
+            .then((res)=>{
+                setDiscs(res.data)
+            })
+    }
+    const getAllInnovaFairways = () => {
+        document.querySelector('.innova-drop-down-container').style.display = 'none'
+        document.querySelector('.innova-drop-down').style.display = 'unset'
+        axios.get('http://localhost:4000/get-all-innova-fairways')
+            .then((res)=>{
+                setDiscs(res.data)
+            })
+    }
+    const getAllInnovaMidranges = () => {
+        document.querySelector('.innova-drop-down-container').style.display = 'none'
+        document.querySelector('.innova-drop-down').style.display = 'unset'
+        axios.get('http://localhost:4000/get-all-innova-midranges')
+            .then((res)=>{
+                setDiscs(res.data)
+            })
+    }
+    const getAllInnovaPutters = () => {
+        document.querySelector('.innova-drop-down-container').style.display = 'none'
+        document.querySelector('.innova-drop-down').style.display = 'unset'
+        axios.get('http://localhost:4000/get-all-innova-putters')
+            .then((res)=>{
+                setDiscs(res.data)
+            })
+    }
+    //Discraft drop down
+    const getAllDiscraftDiscs = () => {
+        document.querySelector('.discraft-drop-down-container').style.display = 'none'
+        document.querySelector('.discraft-drop-down').style.display = 'unset'
+        axios.get('http://localhost:4000/get-all-discraft-discs')
+            .then((res)=>{
+                setDiscs(res.data)
+            })
+    }
+    const getAllDiscraftDrivers = () => {
+        document.querySelector('.discraft-drop-down-container').style.display = 'none'
+        document.querySelector('.discraft-drop-down').style.display = 'unset'
+        axios.get('http://localhost:4000/get-all-discraft-drivers')
+            .then((res)=>{
+                setDiscs(res.data)
+            })
+    }
+    const getAllDiscraftFairways = () => {
+        document.querySelector('.discraft-drop-down-container').style.display = 'none'
+        document.querySelector('.discraft-drop-down').style.display = 'unset'
+        axios.get('http://localhost:4000/get-all-discraft-fairways')
+            .then((res)=>{
+                setDiscs(res.data)
+            })
+    }
+    const getAllDiscraftMidranges = () => {
+        document.querySelector('.discraft-drop-down-container').style.display = 'none'
+        document.querySelector('.discraft-drop-down').style.display = 'unset'
+        axios.get('http://localhost:4000/get-all-discraft-midranges')
+            .then((res)=>{
+                setDiscs(res.data)
+            })
+    }
+    const getAllDiscraftPutters = () => {
+        document.querySelector('.discraft-drop-down-container').style.display = 'none'
+        document.querySelector('.discraft-drop-down').style.display = 'unset'
+        axios.get('http://localhost:4000/get-all-discraft-putters')
+            .then((res)=>{
+                setDiscs(res.data)
+            })
+    }
+    //Discmania drop down
+    const getAllDiscmaniaDiscs = () => {
+        document.querySelector('.discmania-drop-down-container').style.display = 'none'
+        document.querySelector('.discmania-drop-down').style.display = 'unset'
+        axios.get('http://localhost:4000/get-all--discs')
+            .then((res)=>{
+                setDiscs(res.data)
+            })
+    }
+    const getAllDiscmaniaDrivers = () => {
+        document.querySelector('.discmania-drop-down-container').style.display = 'none'
+        document.querySelector('.discmania-drop-down').style.display = 'unset'
+        axios.get('http://localhost:4000/get-all-discmania-drivers')
+            .then((res)=>{
+                setDiscs(res.data)
+            })
+    }
+    const getAllDiscmaniaFairways = () => {
+        document.querySelector('.discmania-drop-down-container').style.display = 'none'
+        document.querySelector('.discmania-drop-down').style.display = 'unset'
+        axios.get('http://localhost:4000/get-all-discmania-fairways')
+            .then((res)=>{
+                setDiscs(res.data)
+            })
+    }
+    const getAllDiscmaniaMidranges = () => {
+        document.querySelector('.discmania-drop-down-container').style.display = 'none'
+        document.querySelector('.discmania-drop-down').style.display = 'unset'
+        axios.get('http://localhost:4000/get-all-discmania-midranges')
+            .then((res)=>{
+                setDiscs(res.data)
+            })
+    }
+    const getAllDiscmaniaPutters = () => {
+        document.querySelector('.discmania-drop-down-container').style.display = 'none'
+        document.querySelector('.discmania-drop-down').style.display = 'unset'
+        axios.get('http://localhost:4000/get-all-discmania-putters')
+            .then((res)=>{
+                setDiscs(res.data)
+            })
+    }
+    //Westside drop down
+    const getAllWestsideDiscs = () => {
+        document.querySelector('.westside-drop-down-container').style.display = 'none'
+        document.querySelector('.westside-drop-down').style.display = 'unset'
+        axios.get('http://localhost:4000/get-all-westside-discs')
+            .then((res)=>{
+                setDiscs(res.data)
+            })
+    }
+    const getAllWestsideDrivers = () => {
+        document.querySelector('.westside-drop-down-container').style.display = 'none'
+        document.querySelector('.westside-drop-down').style.display = 'unset'
+        axios.get('http://localhost:4000/get-all-westside-drivers')
+            .then((res)=>{
+                setDiscs(res.data)
+            })
+    }
+    const getAllWestsideFairways = () => {
+        document.querySelector('.westside-drop-down-container').style.display = 'none'
+        document.querySelector('.westside-drop-down').style.display = 'unset'
+        axios.get('http://localhost:4000/get-all-westside-fairways')
+            .then((res)=>{
+                setDiscs(res.data)
+            })
+    }
+    const getAllWestsideMidranges = () => {
+        document.querySelector('.westside-drop-down-container').style.display = 'none'
+        document.querySelector('.westside-drop-down').style.display = 'unset'
+        axios.get('http://localhost:4000/get-all-westside-midranges')
+            .then((res)=>{
+                setDiscs(res.data)
+            })
+    }
+    const getAllWestsidePutters = () => {
+        document.querySelector('.westside-drop-down-container').style.display = 'none'
+        document.querySelector('.westside-drop-down').style.display = 'unset'
+        axios.get('http://localhost:4000/get-all-westside-putters')
+            .then((res)=>{
+                setDiscs(res.data)
+            })
+    }
     
 
     const logOut = () => {
@@ -102,26 +277,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     
     
     
-    // let bagMapped = bag.map(bag => {
-    //     return(
-    //         <div>
-    //             <div >
-    //         <div className="disc-card">
-    //         <p className="brand">{bag.brand}</p>
-    //         <p className="name">{bag.name}</p>
-    //         <div className="flight-nums">
-    //         <p className="flight-num">{bag.speed}</p>
-    //         <p className="flight-num">{bag.glide}</p>
-    //         <p className="flight-num">{bag.turn}</p>
-    //         <p className="flight-num">{bag.fade}</p>
-    //         </div>
-    //         <button className="remove-from-bag-btn" onClick={removeFromBag}>Remove From Bag</button>
-    //     </div>
-    //     </div>
-
-    //         </div>
-    //     )
-    // })
+   
    const shineAfterEffect = () => {
     let discs = document.querySelectorAll('#shiny')
     discs.forEach((item)=>{
@@ -140,48 +296,19 @@ axios.put('http://localhost:4000/addtobag', {discId})
         })
     }
     // let clicked = false;
-    
-    // const toggleDiscCard = () =>{
-    //     if(clicked) {
-    //         let discCard = document.querySelectorAll('.disc-card')
-    //         discCard.forEach((item)=>{
-    //             item.style.height = '250px'
-    //             item.style.width = '250px'
-    //         })
-    //         let discCardShadow = document.querySelectorAll('.disc-card-shadow')
-    //         discCardShadow.forEach((item)=>{
-    //             item.style.height = '250px'
-    //             item.style.width = '250px'
-    //         })
-    //         let noBackground = document.querySelectorAll('.no-background')
-    //         discCard.forEach((item)=>{
-    //             item.style.height = '250px'
-    //             item.style.width = '250px'
-    //         })
-            
-            
-    //         clicked = false
-    //     }else {
-    //         let discCard = document.querySelectorAll('.disc-card')
-    //         discCard.forEach((item)=>{
-    //             item.style.height = '200px'
-    //             item.style.width = '200px'
-    //         })
-    //         let discCard = document.querySelector('.disc-card')
-    //         discCard.style.height = '200px'
-    //         discCard.style.width = '200px'
-    //         let discCardShadow = document.querySelector('.disc-card-shadow')
-    //         discCard.style.height = '200px'
-    //         discCard.style.width = '200px'
-    //         let noBackground = document.querySelector('.no-background')
-    //         discCard.style.height = '200px'
-    //         discCard.style.width = '200px'
-    //         clicked = true
-    //     }
-    // }
-    
+    // document.querySelector('#dashboard-comp').addEventListener('click', clickOff())
+   
     
     let discsMapped = discs.map((disc, i) => {
+        
+        // console.log(disc.mybag)
+        let addToBagTxt = ''
+        if(disc.mybag === true){
+            
+            addToBagTxt = 'Remove From Bag'
+        } else {
+            addToBagTxt = 'Add To Bag'
+        }
         let styles = {
             backgroundImage: disc.color
         }
@@ -201,7 +328,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
             </div>
             <button onClick={()=>{
                 addToBag(disc.id)
-            }} className="add-to-bag-btn" >Add To Bag</button>
+            }} className="add-to-bag-btn"  >{addToBagTxt}</button>
         </div>
             <div  id="shiny" className={`shiny${i}`} ></div>
         </div>
@@ -218,18 +345,81 @@ axios.put('http://localhost:4000/addtobag', {discId})
       <button id="log-out-btn" onClick={logOut}>Log Out</button>
 
       
-      <div className='dashboard-container'>
-      <button id="dashboard-buttons"  onClick={getAllDiscs}>Get All Discs</button>
-      <button id="dashboard-buttons"  onClick={getAllDrivers}>Sort By Drivers</button>
-      <button id="dashboard-buttons"  onClick={getAllFairways}>Sort By Fairways</button>
-      <button id="dashboard-buttons"  onClick={getAllMidranges}>Sort By Midranges</button>
-      <button id="dashboard-buttons"  onClick={getAllPutters}>Sort By Putters</button>
-      <button id="dashboard-buttons" onClick={myBag}>My Bag</button>
-      <button id="dashboard-buttons" onClick={getRandomDisc}>Get Random Disc</button>
+    <div className='dashboard-container'>
+
+        <div className='disc-buttons-container'>
+        <button className="disc-buttons" id="brand-specific-dashboard-buttons" onClick={()=>{
+            clickOff()
+            document.querySelector('.innova-drop-down-container').style.display = 'unset'
+            document.querySelector('.innova-drop-down').style.display = 'none'
+        }} className='innova-drop-down'>Innova</button>
+        <button className="disc-buttons" id="brand-specific-dashboard-buttons" onClick={()=>{
+                clickOff()
+            document.querySelector('.discraft-drop-down-container').style.display = 'unset'
+            document.querySelector('.discraft-drop-down').style.display = 'none'
+        }} className='discraft-drop-down'>Discraft</button>
+        <button className="disc-buttons" id="brand-specific-dashboard-buttons" onClick={()=>{
+                clickOff()
+            document.querySelector('.discmania-drop-down-container').style.display = 'unset'
+            document.querySelector('.discmania-drop-down').style.display = 'none'
+        }} className='discmania-drop-down'>Discmania</button>
+        <button className="disc-buttons" id="brand-specific-dashboard-buttons" onClick={()=>{
+                clickOff()
+            document.querySelector('.westside-drop-down-container').style.display = 'unset'
+            document.querySelector('.westside-drop-down').style.display = 'none'
+        }} className='westside-drop-down'>Westside</button>
+        <button className="disc-buttons" id="brand-specific-dashboard-buttons" onClick={()=>{
+                clickOff()
+            document.querySelector('.all-drop-down-container').style.display = 'unset'
+            document.querySelector('.all-drop-down').style.display = 'none'
+        }} className='all-drop-down'>All Discs</button>
+        <button className="disc-buttons" id="dashboard-buttons" onClick={myBag}>My Bag</button>
+        <button className="disc-buttons" id="dashboard-buttons" onClick={getRandomDisc}>Get Random Disc</button>
+        <button className="disc-buttons" id="dashboard-buttons" onClick={clearDiscs}>Clear Discs</button>
+        </div>
+        <div className='disc-drop-down-container'>
+        <div className='innova-drop-down-container'>
+        <button id="brand-specific-buttons"  onClick={getAllInnovaDiscs}>Get All Innova Discs</button>
+        <button id="brand-specific-buttons"  onClick={getAllInnovaDrivers}>Get All Innova Drivers</button>
+        <button id="brand-specific-buttons"  onClick={getAllInnovaFairways}>Get All Innova Fairways</button>
+        <button id="brand-specific-buttons"  onClick={getAllInnovaMidranges}>Get All Innova Midranges</button>
+        <button id="brand-specific-buttons"  onClick={getAllInnovaPutters}>Get All Innova Putters</button>
+        </div>
+        <div className='discraft-drop-down-container'>
+        <button id="brand-specific-buttons"  onClick={getAllDiscraftDiscs}>Get All Discraft Discs</button>
+        <button id="brand-specific-buttons"  onClick={getAllDiscraftDrivers}>Get All Discraft Drivers</button>
+        <button id="brand-specific-buttons"  onClick={getAllDiscraftFairways}>Get All Discraft Fairways</button>
+        <button id="brand-specific-buttons"  onClick={getAllDiscraftMidranges}>Get All Discraft Midranges</button>
+        <button id="brand-specific-buttons"  onClick={getAllDiscraftPutters}>Get All Discraft Putters</button>
+        </div>
+        <div className='discmania-drop-down-container'>
+        <button id="brand-specific-buttons"  onClick={getAllDiscmaniaDiscs}>Get All Discmania Discs</button>
+        <button id="brand-specific-buttons"  onClick={getAllDiscmaniaDrivers}>Get All Discmania Drivers</button>
+        <button id="brand-specific-buttons"  onClick={getAllDiscmaniaFairways}>Get All Discmania Fairways</button>
+        <button id="brand-specific-buttons"  onClick={getAllDiscmaniaMidranges}>Get All Discmania Midranges</button>
+        <button id="brand-specific-buttons"  onClick={getAllDiscmaniaPutters}>Get All Discmania Putters</button>
+        </div>
+        <div className='westside-drop-down-container'>
+        <button id="brand-specific-buttons"  onClick={getAllWestsideDiscs}>Get All Westside Discs</button>
+        <button id="brand-specific-buttons"  onClick={getAllWestsideDrivers}>Get All Westside Drivers</button>
+        <button id="brand-specific-buttons"  onClick={getAllWestsideFairways}>Get All Westside Fairways</button>
+        <button id="brand-specific-buttons"  onClick={getAllWestsideMidranges}>Get All Westside Midranges</button>
+        <button id="brand-specific-buttons"  onClick={getAllWestsidePutters}>Get All Westside Putters</button>
+        </div>
+        <div className='all-drop-down-container'>
+        <button id="brand-specific-buttons"  onClick={getAllDiscs}>Get All Discs</button>
+        <button id="brand-specific-buttons"  onClick={getAllDrivers}>Get All Drivers</button>
+        <button id="brand-specific-buttons"  onClick={getAllFairways}>Get All Fairways</button>
+        <button id="brand-specific-buttons"  onClick={getAllMidranges}>Get All Midranges</button>
+        <button id="brand-specific-buttons"  onClick={getAllPutters}>Get All Putters</button>
+        </div>
+        </div>
+         
       </div>
-      <div className="disc-container">{discsMapped}</div>
-      {/* <div className="bag-container">{bagMapped}</div> */}
+
       
+      
+      <div className="disc-container">{discsMapped}</div>
   </div>);
 }
 

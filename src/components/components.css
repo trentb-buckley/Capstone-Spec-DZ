@@ -223,14 +223,48 @@ input {
     transform: rotatez(45deg)translate(-500px)
     
 }
-.dashboard-container {
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
+
+
+
+
+
+#toggle-password {
     position: relative;
-    right: 0;
-    top: 0;
+    display: none;
+    height: 25px;
+    width: 100px;
+    background-color: red;
+    color: black;
+    border-radius: 7px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
 }
-body {
-    background-image: linear-gradient(red, white);
+.innova-drop-down-container,
+.discraft-drop-down-container,
+.discmania-drop-down-container,
+.westside-drop-down-container,
+.all-drop-down-container {
+
+    display: none;
+    display: flex;
+    flex-direction: column;
 }
+.dashboard-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.disc-buttons-container,
+.discraft-drop-down-container {
+    display: flex;
+
+}
+.disc-buttons {
+    margin:0;
+    padding: 0;
+    height: 100px;
+    width: 150px;
+}
+

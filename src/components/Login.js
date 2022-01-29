@@ -20,6 +20,7 @@ function Login(props) {
     localStorage.setItem('id', res.data.id)
     localStorage.setItem('name', res.data.name)
     // props.logFunction()
+    
     let login = document.getElementById('login-comp')
     login.style.display='none'
     let dashboard = document.getElementById('dashboard-comp')
@@ -28,7 +29,7 @@ function Login(props) {
     let emptyInput = document.getElementById('empty-input')
     emptyInput.value = ''
     let emptyInputPassword = document.getElementById('empty-input-password')
-    emptyInputPassword.password = ''
+    emptyInputPassword.value = ''
       // navigate('/secret')
     })
     .catch((err) => {
@@ -51,8 +52,29 @@ function Login(props) {
     onSubmit,
     validate
   })
+let showText = true
+  const iTextToggle = () => {
+    let iText = document.querySelector('i')
+    if(iText.textContent === 'Show Text') {
+      iText.textContent = 'Hide Text'
+      iText.style.backgroundColor = 'black'
+      iText.style.color = 'red'
+    } else {
+      iText.textContent = 'Show Text'
+      iText.style.backgroundColor = 'red'
+      iText.style.color = 'black'
 
-
+    }
+  }
+  // const checkChange = () => {
+  //   let input = document.querySelector('#empty-input-password')
+  //   if(input.value){
+  //     document.querySelector('i').style.display = 'unset'
+  //   } else {
+  //     document.querySelector('i').style.display = 'none'
+  //   }
+  // }
+  // checkChange()
   return (<div id="login-comp">
     <Header />
     <h2>Login Page</h2>
@@ -70,9 +92,25 @@ function Login(props) {
         type="password"
         name="password"
         onChange={formik.handleChange}
+        onKeyUp={(event)=>{
+          if (event.key === 13) {
+            console.log(event.key)
+            onSubmit()
+        }
+        }}
         value={formik.values.password}
         placeholder='Password'
          />
+         <i className="bi bi-eye-slash" id="toggle-password" onClick={(e)=>{
+      // toggle the type attribute
+      iTextToggle()
+      const password = document.querySelector("#empty-input-password");
+      const type = password.getAttribute("type") === "password" ? "text" : "password";
+      password.setAttribute("type", type);
+      
+      // toggle the icon
+      // e.classList.toggle("bi-eye");
+  }}>Show Text</i>
          <button className="menu-btn" type='submit' disabled={!formik.isValid}>Submit</button>
     <h1>Don't have an account?</h1>
     <button className="menu-btn" className="go-to-register" onClick={()=>{

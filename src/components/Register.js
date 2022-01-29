@@ -95,7 +95,9 @@ function Register() {
         
         let register = document.getElementById('register-comp')
         register.style.display = 'none'
-    }}>Go to Login</button>
+    }}>
+      Go to Login
+      </button>
     </form>
   </div>;
 }
