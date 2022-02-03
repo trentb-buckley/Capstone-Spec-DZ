@@ -135,6 +135,7 @@ let showText = true
     dashboard.style.display = 'none'
     }}>Sign Up</button>
     </form>
+    <img className='ace-pic' src={require('./ace-photo.jpg')}></img>
   </div>);
 }
 

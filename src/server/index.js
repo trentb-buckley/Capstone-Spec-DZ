@@ -1,13 +1,28 @@
 const express = require('express')
 const cors = require('cors')
-// const path = require('path')
+const path = require('path')
 const app = express()
+
+require('dotenv').config()
+const {DATABASE_URL} = process.env
+
 const PORT = process.env.PORT || 4000;
 const bcrypt = require('bcrypt')
 const {Sequelize} = require('sequelize')
 
+// const publicPath = path.join(__dirname, 'build', 'public');
+// app.use(express.static(publicPath));
+
+app.use(express.static(path.resolve(__dirname, "../build")));
+
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(publicPath, '../../public/index.html'));
+//  });
+
+
+
 const sequelize = new Sequelize(
-    "postgres://yovtbpxqkbmdnf:1248874b566efabbb7a3f89633933437ac1a3484dc7cb985185e1788fffe1a48@ec2-3-89-214-80.compute-1.amazonaws.com:5432/d1jnhm8p0fac65",
+    DATABASE_URL,
     {
         dialect: "postgres",
         dialectOptions: {
@@ -389,5 +404,9 @@ app.post('/login', async (req, res) => {
 
   })
 
+  app.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, '../build', 'index.html'));
+  });
+
 // sequelize.authenticate()
-app.listen(PORT, () => console.log(`Slamming on port ${PORT}`))
+app.listen(PORT, () => console.log(`Absolutely killing it on port ${PORT}`))

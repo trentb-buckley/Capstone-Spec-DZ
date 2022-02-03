@@ -25,15 +25,15 @@ function Register() {
   const validate = (values) => {
     const errors = {}
     if(!values.username) {
-      errors.username = "Username Required"
+      errors.username = "Username is Required"
     }
     if(!values.password) {
-      errors.password = "Password Required"
+      errors.password = "Password is Required"
     } else if(values.password.length < 8) {
       errors.password = "Password must be longer than 8 Characters."
     }
     if(!values.name) {
-      errors.name = "You gotta have a name!!"
+      errors.name = "Name is required"
     }
     if(!values.confirmPassword) {
       errors.confirmPassword = "Please Confirm Password"
@@ -99,6 +99,7 @@ function Register() {
       Go to Login
       </button>
     </form>
+    <img className='ace-pic ace-pic-register' src={require('./ace-photo.jpg')}></img>
   </div>;
 }
 

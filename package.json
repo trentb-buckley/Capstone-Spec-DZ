@@ -2,6 +2,7 @@
   "name": "this-is-the-app",
   "version": "0.1.0",
   "private": true,
+  "main": "./src/server/index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
@@ -23,7 +24,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node ./src/server/index.js && npm build",
+    "go": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

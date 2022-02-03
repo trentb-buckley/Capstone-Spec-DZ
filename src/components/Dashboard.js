@@ -365,6 +365,11 @@ axios.put('http://localhost:4000/addtobag', {discId})
     <div className='dashboard-container'>
 
         <div className='disc-buttons-container'>
+            <button className="disc-buttons" id="brand-specific-dashboard-buttons" onClick={()=>{
+                    clickOff()
+                document.querySelector('.all-drop-down-container').style.display = 'flex'
+                // document.querySelector('.all-drop-down').style.display = 'none'
+            }} className='all-drop-down'>All Discs</button>
         <button className="disc-buttons" id="brand-specific-dashboard-buttons" onClick={()=>{
             clickOff()
             document.querySelector('.innova-drop-down-container').style.display = 'flex'
@@ -385,11 +390,6 @@ axios.put('http://localhost:4000/addtobag', {discId})
             document.querySelector('.westside-drop-down-container').style.display = 'flex'
             // document.querySelector('.westside-drop-down').style.display = 'none'
         }} className='westside-drop-down'>Westside</button>
-        <button className="disc-buttons" id="brand-specific-dashboard-buttons" onClick={()=>{
-                clickOff()
-            document.querySelector('.all-drop-down-container').style.display = 'flex'
-            // document.querySelector('.all-drop-down').style.display = 'none'
-        }} className='all-drop-down'>All Discs</button>
         <button className="disc-buttons" id="dashboard-buttons" onClick={()=>{
             myBag()
             clickOff()

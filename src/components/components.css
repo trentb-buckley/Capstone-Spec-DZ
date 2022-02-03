@@ -19,9 +19,15 @@ button {
     transition: .15s;
     /* border-radius: 15px; */
     text-align: center;
+    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Zen Antique Soft', serif;
+    font-family: 'Poppins', sans-serif;
 }
 button:hover {
-    transform: scale(1.05,1.05)
+    transform: scale(1.05,1.05);        
+    background-color: black;
+    color: white;
+    transform: translate(0,-5px)
 }
 
 #register-comp {
@@ -129,7 +135,7 @@ button:hover {
     border-radius: 60px;
     background: none;
     /* color: black; */
-    font-size: 15px;
+    font-size: 12px;
 }
 .disc-container {
     width: 100vw;
@@ -142,13 +148,13 @@ button:hover {
     background: none;
     color: black;
     font-size: 25px;
+    font-family: 'Poppins', sans-serif;
     font-family: 'Josefin Sans', sans-serif;
-font-family: 'Poppins', sans-serif;
-font-family: 'Zen Antique Soft', serif;
     font-style: italic;
 }
 .brand {
     font-weight: bold;
+    font-family: 'Zen Antique Soft', serif;
 }
 header {
     height: 100px;
@@ -175,11 +181,6 @@ header {
     color: #333333; */
 }
 
-.title {
-    font-size: 100px;
-    /* color: red; */
-    margin-bottom: 100px;
-}
 
 .login-form {
     height: 500px;
@@ -195,7 +196,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    
 }
 input {
     width: 250px;
@@ -206,7 +207,7 @@ input {
 }
 .menu-btn {
     height: 50px;
-    width: 80px;
+    /* width: 80px; */
     /* background-color: red; */
     /* color: #333333; */
 }
@@ -270,7 +271,7 @@ input {
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 50px;
-    height: 200px;
+    height: 150px;
     width: 95%;
     border: 2px solid black;
     margin-left: 3%;
@@ -288,6 +289,7 @@ input {
     justify-content: center;
     width: 150px;
     flex-direction: row;
+    transform: translate(-80px,0)
 }
 /* .brand-container {
     height: 100px;
@@ -296,9 +298,9 @@ input {
 .disc-buttons {
     margin:0;
     padding: 0;
-   /* margin-left: 20px;
-   margin-right: 20px; */
-   /* height: 100px; */
+    /* margin-left: 20px;
+    margin-right: 20px; */
+    /* height: 100px; */
 }
 .innova-drop-down,
 .discraft-drop-down,
@@ -323,7 +325,7 @@ input {
 .discmania-drop-down-container,
 .westside-drop-down-container,
 .all-drop-down-container {
-
+    
     display: flex;
     justify-content: space-between;
     display: none;
@@ -335,8 +337,40 @@ input {
     margin-bottom: 100px;
 }
 .title{
+    /* pointer-events: none; */
+    font-size: 100px;
+    /* color: red; */
+    transition: .15s;
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+.title:hover {
+    /* background-color: black; */
+    color: black;
+    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+    transform: translate(0,-5px);
+}
+.title-container {
     margin-right: 200px;
+    display: flex;
+    flex-direction: row;
 }
 
 
 
+.ace-pic {
+    z-index: -1;
+    height: 120vh;
+    position: absolute;
+    left: 28vw;
+    top: -100px;
+    opacity: 50%;
+    box-shadow: 0 0 8px 8px #d4d1cd inset;
+}
+ace-pic-register {
+    top: 50px;
+}
+#empty-input,
+#empty-input-password {
+    opacity: 75%;
+}
