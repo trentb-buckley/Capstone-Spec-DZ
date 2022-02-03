@@ -13,7 +13,7 @@ const {Sequelize} = require('sequelize')
 // const publicPath = path.join(__dirname, 'build', 'public');
 // app.use(express.static(publicPath));
 
-app.use(express.static(path.resolve(__dirname, "../build")));
+app.use(express.static(path.resolve(__dirname, "../../build")));
 
 // app.get('*', (req, res) => {
 //     res.sendFile(path.join(publicPath, '../../public/index.html'));
@@ -405,7 +405,7 @@ app.post('/login', async (req, res) => {
   })
 
   app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname, '../build', 'index.html'));
+    res.sendFile(path.join(__dirname, '../../build', 'index.html'));
   });
 
 // sequelize.authenticate()
