@@ -13,7 +13,7 @@ function Register() {
 
   }
   const onSubmit = (values) => {
-    axios.post('http://localhost:4000/register', values)
+    axios.post('/register', values)
     .then((res) => {
       console.log(res.data)
       localStorage.setItem('username', res.data[0][0].username)

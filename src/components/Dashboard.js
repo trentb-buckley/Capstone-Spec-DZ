@@ -23,7 +23,7 @@ function Dashboard() {
     const getAllDiscs = ()=>{
         document.querySelector('.all-drop-down-container').style.display = 'none'
         document.querySelector('.all-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/discs')
+        axios.get('/discs')
         .then((res)=>{
             setDiscs(res.data)
         })
@@ -33,7 +33,7 @@ function Dashboard() {
     const getAllDrivers = ()=>{
         document.querySelector('.all-drop-down-container').style.display = 'none'
         document.querySelector('.all-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/drivers')
+        axios.get('/drivers')
         .then((res)=>{
             setDiscs(res.data)
         })
@@ -43,7 +43,7 @@ function Dashboard() {
     const getAllFairways = ()=>{
         document.querySelector('.all-drop-down-container').style.display = 'none'
         document.querySelector('.all-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/fairways')
+        axios.get('/fairways')
         .then((res)=>{
             setDiscs(res.data)
         })
@@ -53,7 +53,7 @@ function Dashboard() {
     const getAllMidranges = ()=>{
         document.querySelector('.all-drop-down-container').style.display = 'none'
         document.querySelector('.all-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/midranges')
+        axios.get('/midranges')
         .then((res)=>{
             setDiscs(res.data)
         })
@@ -63,7 +63,7 @@ function Dashboard() {
     const getAllPutters = ()=>{
         document.querySelector('.all-drop-down-container').style.display = 'none'
         document.querySelector('.all-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/putters')
+        axios.get('/putters')
         .then((res)=>{
             setDiscs(res.data)
         })
@@ -71,7 +71,7 @@ function Dashboard() {
 
     }
     const getRandomDisc = () =>{
-        axios.get('http://localhost:4000/random')
+        axios.get('/random')
         .then((res)=>{
             let items = res.data
             
@@ -82,7 +82,7 @@ function Dashboard() {
         })
     }
     const getRandomPack = () =>{
-        axios.get('http://localhost:4000/pack') 
+        axios.get('/pack') 
         .then((res)=>{
             // let resData = res.data
             // console.log(resData)
@@ -94,7 +94,7 @@ function Dashboard() {
     }
     const addToBag = (discId) =>{
     
-axios.put('http://localhost:4000/addtobag', {discId})
+axios.put('/addtobag', {discId})
         .then((res)=>{
 
             // myBag()
@@ -102,7 +102,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
         })
 }
     const myBag = ()=>{
-        axios.get('http://localhost:4000/mybag')
+        axios.get('/mybag')
         .then((res) => {
             setDiscs(res.data)
 
@@ -112,7 +112,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllInnovaDiscs = () => {
         document.querySelector('.innova-drop-down-container').style.display = 'none'
         document.querySelector('.innova-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all-innova-discs')
+        axios.get('/get-all-innova-discs')
             .then((res)=>{
                 setDiscs(res.data)
             })
@@ -120,7 +120,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllInnovaDrivers = () => {
         document.querySelector('.innova-drop-down-container').style.display = 'none'
         document.querySelector('.innova-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all-innova-drivers')
+        axios.get('/get-all-innova-drivers')
             .then((res)=>{
                 setDiscs(res.data)
             })
@@ -128,7 +128,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllInnovaFairways = () => {
         document.querySelector('.innova-drop-down-container').style.display = 'none'
         document.querySelector('.innova-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all-innova-fairways')
+        axios.get('/get-all-innova-fairways')
             .then((res)=>{
                 setDiscs(res.data)
             })
@@ -136,7 +136,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllInnovaMidranges = () => {
         document.querySelector('.innova-drop-down-container').style.display = 'none'
         document.querySelector('.innova-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all-innova-midranges')
+        axios.get('/get-all-innova-midranges')
             .then((res)=>{
                 setDiscs(res.data)
             })
@@ -144,7 +144,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllInnovaPutters = () => {
         document.querySelector('.innova-drop-down-container').style.display = 'none'
         document.querySelector('.innova-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all-innova-putters')
+        axios.get('/get-all-innova-putters')
             .then((res)=>{
                 setDiscs(res.data)
             })
@@ -153,7 +153,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllDiscraftDiscs = () => {
         document.querySelector('.discraft-drop-down-container').style.display = 'none'
         document.querySelector('.discraft-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all-discraft-discs')
+        axios.get('/get-all-discraft-discs')
             .then((res)=>{
                 setDiscs(res.data)
             })
@@ -161,7 +161,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllDiscraftDrivers = () => {
         document.querySelector('.discraft-drop-down-container').style.display = 'none'
         document.querySelector('.discraft-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all-discraft-drivers')
+        axios.get('/get-all-discraft-drivers')
             .then((res)=>{
                 setDiscs(res.data)
             })
@@ -169,7 +169,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllDiscraftFairways = () => {
         document.querySelector('.discraft-drop-down-container').style.display = 'none'
         document.querySelector('.discraft-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all-discraft-fairways')
+        axios.get('/get-all-discraft-fairways')
             .then((res)=>{
                 setDiscs(res.data)
             })
@@ -177,7 +177,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllDiscraftMidranges = () => {
         document.querySelector('.discraft-drop-down-container').style.display = 'none'
         document.querySelector('.discraft-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all-discraft-midranges')
+        axios.get('/get-all-discraft-midranges')
             .then((res)=>{
                 setDiscs(res.data)
             })
@@ -185,7 +185,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllDiscraftPutters = () => {
         document.querySelector('.discraft-drop-down-container').style.display = 'none'
         document.querySelector('.discraft-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all-discraft-putters')
+        axios.get('/get-all-discraft-putters')
             .then((res)=>{
                 setDiscs(res.data)
             })
@@ -194,7 +194,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllDiscmaniaDiscs = () => {
         document.querySelector('.discmania-drop-down-container').style.display = 'none'
         document.querySelector('.discmania-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all-discmania-discs')
+        axios.get('/get-all-discmania-discs')
             .then((res)=>{
                 setDiscs(res.data)
                 console.log(res.data)
@@ -203,7 +203,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllDiscmaniaDrivers = () => {
         document.querySelector('.discmania-drop-down-container').style.display = 'none'
         document.querySelector('.discmania-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all-discmania-drivers')
+        axios.get('/get-all-discmania-drivers')
             .then((res)=>{
                 setDiscs(res.data)
             })
@@ -211,7 +211,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllDiscmaniaFairways = () => {
         document.querySelector('.discmania-drop-down-container').style.display = 'none'
         document.querySelector('.discmania-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all-discmania-fairways')
+        axios.get('/get-all-discmania-fairways')
             .then((res)=>{
                 setDiscs(res.data)
             })
@@ -219,7 +219,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllDiscmaniaMidranges = () => {
         document.querySelector('.discmania-drop-down-container').style.display = 'none'
         document.querySelector('.discmania-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all-discmania-midranges')
+        axios.get('/get-all-discmania-midranges')
             .then((res)=>{
                 setDiscs(res.data)
             })
@@ -227,7 +227,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllDiscmaniaPutters = () => {
         document.querySelector('.discmania-drop-down-container').style.display = 'none'
         document.querySelector('.discmania-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all-discmania-putters')
+        axios.get('/get-all-discmania-putters')
             .then((res)=>{
                 setDiscs(res.data)
             })
@@ -236,7 +236,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllWestsideDiscs = () => {
         document.querySelector('.westside-drop-down-container').style.display = 'none'
         document.querySelector('.westside-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all-westside-discs')
+        axios.get('/get-all-westside-discs')
             .then((res)=>{
                 setDiscs(res.data)
             })
@@ -244,7 +244,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllWestsideDrivers = () => {
         document.querySelector('.westside-drop-down-container').style.display = 'none'
         document.querySelector('.westside-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all-westside-drivers')
+        axios.get('/get-all-westside-drivers')
             .then((res)=>{
                 setDiscs(res.data)
             })
@@ -252,7 +252,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllWestsideFairways = () => {
         document.querySelector('.westside-drop-down-container').style.display = 'none'
         document.querySelector('.westside-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all-westside-fairways')
+        axios.get('/get-all-westside-fairways')
             .then((res)=>{
                 setDiscs(res.data)
             })
@@ -260,7 +260,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllWestsideMidranges = () => {
         document.querySelector('.westside-drop-down-container').style.display = 'none'
         document.querySelector('.westside-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all-westside-midranges')
+        axios.get('/get-all-westside-midranges')
             .then((res)=>{
                 setDiscs(res.data)
             })
@@ -268,7 +268,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllWestsidePutters = () => {
         document.querySelector('.westside-drop-down-container').style.display = 'none'
         document.querySelector('.westside-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all-westside-putters')
+        axios.get('/get-all-westside-putters')
             .then((res)=>{
                 setDiscs(res.data)
             })

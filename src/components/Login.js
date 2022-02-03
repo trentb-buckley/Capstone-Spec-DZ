@@ -13,7 +13,7 @@ function Login(props) {
     password: ""
   }
   const onSubmit = (values) => {
-    axios.post('http://localhost:4000/login', values)
+    axios.post('/login', values)
     .then((res) => {
     // console.log('Hello World')
     localStorage.setItem('username', res.data.username)
