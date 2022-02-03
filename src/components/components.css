@@ -2,17 +2,23 @@
 * {
     margin: 0;
     padding: 0;
-    background-color: #333333;
-    color: #959595;
+    color: #011627;
+    /* background-color: #333333; */
+    /* color: #959595; */
+}
+body {
+    background-color: #d4d1cd;
 }
 button {
-    height: 80px;
-    width: 120px;
-    background-color: red;
-    color: #333333;
+    /* height: 80px; */
+    /* width: 120px; */
+    /* background-color: #2ec4b6; */
+    background-color: white;
+    /* color: #333333; */
     font-size: 25px;
     transition: .15s;
-    border-radius: 15px;
+    /* border-radius: 15px; */
+    text-align: center;
 }
 button:hover {
     transform: scale(1.05,1.05)
@@ -25,10 +31,13 @@ button:hover {
 }
 #login-comp {
     text-align: center;
-    background-color: #333333;
+    /* background-color: #333333; */
     width: 100vw;
-    height: 100vw;
-    color: #959595;
+    height: 100%;
+    position: relative;
+    top:0;
+   background:none;
+    /* color: #959595; */
     
 }
 #dashboard-comp {
@@ -37,7 +46,6 @@ button:hover {
 }
 .flight-nums {
     display: flex;
-    /* background-color: aqua; */
     width: 100%;
     justify-content: center;
     display: flex;
@@ -52,7 +60,8 @@ button:hover {
     border-radius: 50%;
     
     align-items: center;
-    background-image: linear-gradient(to right, blue, lightgreen 100px, yellow 200px);
+    background-image: linear-gradient(to right, #a1f8ff, #92cde8);
+    /* background-image: linear-gradient(to right, blue, lightgreen 100px, yellow 200px); */
     background-size: 100% 100%;
     background-position: 50% 100%;
     background-repeat: no-repeat;
@@ -62,14 +71,15 @@ button:hover {
     justify-content: space-evenly;
     /* margin: 25px; */
     transition: .25s;
+    
     /* overflow: hidden; */
 }
 .disc-card-shadow {
     height: 200px;
     width: 200px;
     /* border-radius: 100px; */
-    box-shadow: 10px 10px 10px black,
-    0 0 5px black;
+    box-shadow: 10px 10px 10px #827e7e,
+    0 0 5px #827e7e;
     margin: 25px;
     background: none;
     z-index: 999;
@@ -118,7 +128,7 @@ button:hover {
     width: 80px;
     border-radius: 60px;
     background: none;
-    color: black;
+    /* color: black; */
     font-size: 15px;
 }
 .disc-container {
@@ -132,7 +142,13 @@ button:hover {
     background: none;
     color: black;
     font-size: 25px;
+    font-family: 'Josefin Sans', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Zen Antique Soft', serif;
     font-style: italic;
+}
+.brand {
+    font-weight: bold;
 }
 header {
     height: 100px;
@@ -142,7 +158,7 @@ header {
     justify-content: center;
 }
 #log-out-btn {
-    height: 40px;
+    /* height: 40px; */
 
     position: absolute;
     left: 10px;
@@ -150,18 +166,18 @@ header {
     
 }
 #dashboard-buttons {
-    height: 80px;
+    /* height: 80px; */
     border-radius: 5px;
-    background-color: #898989;
-    font-size: larger;
-    margin: 25px;
-    background-color: red;
-    color: #333333;
+    /* background-color: #898989; */
+    /* font-size: larger; */
+    /* margin: 25px; */
+    /* background-color: red;
+    color: #333333; */
 }
 
 .title {
     font-size: 100px;
-    color: red;
+    /* color: red; */
     margin-bottom: 100px;
 }
 
@@ -172,6 +188,7 @@ header {
     flex-direction: column;
     align-items: center;
 }
+
 .register-form {
     height: 500px;
     width: 100%;
@@ -190,12 +207,15 @@ input {
 .menu-btn {
     height: 50px;
     width: 80px;
-    background-color: red;
-    color: #333333;
+    /* background-color: red; */
+    /* color: #333333; */
 }
 
 .header-comp {
     display: flex;
+    position: relative;
+    top: 0;
+    /* background-color: lightcyan; */
     width: 100vw ;
     align-items: center;
     justify-content: center;
@@ -233,22 +253,12 @@ input {
     display: none;
     height: 25px;
     width: 100px;
-    background-color: red;
-    color: black;
+    /* background-color: red;
+    color: black; */
     border-radius: 7px;
     text-align: center;
     cursor: pointer;
     user-select: none;
-}
-.innova-drop-down-container,
-.discraft-drop-down-container,
-.discmania-drop-down-container,
-.westside-drop-down-container,
-.all-drop-down-container {
-
-    display: none;
-    display: flex;
-    flex-direction: column;
 }
 .dashboard-container {
     width: 100%;
@@ -256,15 +266,77 @@ input {
     justify-content: center;
     flex-direction: column;
 }
-.disc-buttons-container,
-.discraft-drop-down-container {
+.disc-buttons-container{
     display: flex;
-
+    justify-content: space-evenly;
+    margin-bottom: 50px;
+    height: 200px;
+    width: 95%;
+    border: 2px solid black;
+    margin-left: 3%;
 }
+.disc-drop-down-container{
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 12%;
+}
+#brand-specific-buttons {
+    
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    flex-direction: row;
+}
+/* .brand-container {
+    height: 100px;
+    width: 70%;
+} */
 .disc-buttons {
     margin:0;
     padding: 0;
-    height: 100px;
-    width: 150px;
+   /* margin-left: 20px;
+   margin-right: 20px; */
+   /* height: 100px; */
 }
+.innova-drop-down,
+.discraft-drop-down,
+.discmania-drop-down,
+.westside-drop-down,
+.all-drop-down,
+.disc-buttons{
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    border-radius: 5px;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    /* width: 100px; */
+    
+}
+.innova-drop-down-container,
+.discraft-drop-down-container,
+.discmania-drop-down-container,
+.westside-drop-down-container,
+.all-drop-down-container {
+
+    display: flex;
+    justify-content: space-between;
+    display: none;
+    /* flex-direction: column; */
+    width: 95%;
+    height: 100px;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin-bottom: 100px;
+}
+.title{
+    margin-right: 200px;
+}
+
+
 

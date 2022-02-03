@@ -5,6 +5,7 @@ const app = express()
 const PORT = process.env.PORT || 4000;
 const bcrypt = require('bcrypt')
 const {Sequelize} = require('sequelize')
+
 const sequelize = new Sequelize(
     "postgres://yovtbpxqkbmdnf:1248874b566efabbb7a3f89633933437ac1a3484dc7cb985185e1788fffe1a48@ec2-3-89-214-80.compute-1.amazonaws.com:5432/d1jnhm8p0fac65",
     {
@@ -24,40 +25,6 @@ app.use(cors());
 
 //Put endpoints here
 
-// app.post('/addtobag', async (req, res)=> {
-//     let myBag = await sequelize.query(`
-//         select * from discs
-//         where mybag = true
-//     `)
-//     res.status(200).send(myBag)
-//     // const {id} = req.body
-//     console.log(req.body)
-//     // let checkDisc = await sequelize.query(`
-//     //     select mybag from discs
-//     //     where id = '${id}'
-//     // `)
-//     // if(checkDisc[1].rowCount !== 0){
-//     //     res.status(500).send('Disc is already in bag')
-//     // } else {
-//     //     await sequelize.query(`
-//     //         update discs
-//     //         set mybag = true
-//     //         where id = '${id}'
-//     //     `)
-//     //     res.status(200).send(myBag)
-//     // }
-// })
-// let colors = {`
-// Innova drivers = linear-gradient(to right, blue, lightgreen 100px, yellow 200px)
-// Innova fairways = linear-gradient(to right, blue, cyan 100px, blue 200px)
-// Innova midranges linear-gradient(to right, green, orange 100px, blue 200px)
-// Innova Putters = linear-gradient(to right, skyblue, cyan 100px, skyblue 200px)
-
-// Discraft drivers = linear-gradient(to right, purple, yellow 100px, red 200px)
-// Discraft fairways = linear-gradient(to bottom, yellow, cyan 100px, white 200px)
-// Discraft midranges = linear-gradient(to bottom, yellow, teal 100px, green 200px)
-// Discraft Putters = linear-gradient(to bottom, orange, yellow 100px, red 200px)
-// `}
 
 app.get('/discs', async (req, res) => {
     let discs = await sequelize.query(`
@@ -74,6 +41,37 @@ app.get('/random', async (req, res) => {
     `)
     
     res.status(200).send(discs[0]);
+})
+app.get('/pack', async (req, res) => {
+    
+    let fairways = await sequelize.query(`
+        select * from discs
+        where speed < 11
+        and speed > 6
+        and fade < 3
+    `)
+    let fairway = fairways[0]
+    let ranFairway = fairway[Math.floor(Math.random()*fairway.length)]
+           
+    let midranges = await sequelize.query(`
+        select * from discs
+        where midrange = true  
+        and fade < 3
+    `)
+    let midrange = midranges[0]
+    let ranMidrange = midrange[Math.floor(Math.random()*midrange.length)]
+
+    let putters = await sequelize.query(`
+        select * from discs
+        where putter = true  
+        and fade < 3
+    `)
+    let putter = putters[0]
+    let ranPutter = putter[Math.floor(Math.random()*putter.length)]
+
+    let arr = [ranFairway, ranMidrange, ranPutter]
+    // console.log(arr)
+    res.status(200).send(arr)
 })
 app.get('/drivers', async (req, res) => {
     let discs = await sequelize.query(`
@@ -109,28 +107,27 @@ app.get('/putters', async (req, res) => {
     res.status(200).send(discs[0]);
 })
 
- // select mybag from discs
-    // where id = ${discId}
-    // if mybag = true
-    // update discs
-    // set mybag = false 
-    // where id = ${discId}
-    // else
-    // update discs
-    // set mybag = true 
-    // where id = ${discId}
-    // end if;
+ 
 app.put('/addtobag', async (req, res) =>{
     let discId = req.body.discId
-    sequelize.query(`
-   
-    update discs
-    set mybag = true
-    where id = ${discId}
-        
+    let mybagTruthy = await sequelize.query(`
+        select mybag from discs
+        where id = ${discId}
     `)
-    res.sendStatus(200)
-    
+    if(mybagTruthy[0][0].mybag === false){
+        await sequelize.query(`
+            update discs
+            set mybag = true 
+            where id = ${discId}
+        `)
+    } else {
+        await sequelize.query(`
+        update discs
+        set mybag = false
+        where id = ${discId}
+        `)
+    }   
+    res.sendStatus(200)   
 })
 app.get('/mybag', async (req,res) => {
     let myBag = await sequelize.query(`

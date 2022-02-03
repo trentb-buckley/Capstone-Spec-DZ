@@ -81,6 +81,14 @@ function Dashboard() {
             setDiscs(itemArr)
         })
     }
+    const getRandomPack = () =>{
+        axios.get('http://localhost:4000/pack') 
+        .then((res)=>{
+            // let resData = res.data
+            // console.log(resData)
+            setDiscs(res.data)
+        })
+    }
     const clearDiscs = () =>{
         setDiscs([])
     }
@@ -186,9 +194,10 @@ axios.put('http://localhost:4000/addtobag', {discId})
     const getAllDiscmaniaDiscs = () => {
         document.querySelector('.discmania-drop-down-container').style.display = 'none'
         document.querySelector('.discmania-drop-down').style.display = 'unset'
-        axios.get('http://localhost:4000/get-all--discs')
+        axios.get('http://localhost:4000/get-all-discmania-discs')
             .then((res)=>{
                 setDiscs(res.data)
+                console.log(res.data)
             })
     }
     const getAllDiscmaniaDrivers = () => {
@@ -285,6 +294,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
         
 
     })
+    return
    }
     const shineEffect = () => {
         let discs = document.querySelectorAll('#shiny')
@@ -294,6 +304,7 @@ axios.put('http://localhost:4000/addtobag', {discId})
             // shineEffect()
 
         })
+        return
     }
     // let clicked = false;
     // document.querySelector('#dashboard-comp').addEventListener('click', clickOff())
@@ -312,11 +323,12 @@ axios.put('http://localhost:4000/addtobag', {discId})
         let styles = {
             backgroundImage: disc.color
         }
+
         return (
             <div className='disc-card-shadow'>
         
             <div className='no-background' >
-            <div onLoad={setTimeout(shineEffect,2500)} className="disc-card" style={styles}>
+            <div onLoad={setTimeout(shineEffect, 2500)} className="disc-card" style={styles}>
             <p className="brand">{disc.brand}</p>
             <p className="name">{disc.name}</p>
             <div className="flight-nums">
@@ -325,9 +337,12 @@ axios.put('http://localhost:4000/addtobag', {discId})
             <p className="flight-num">{disc.glide}</p>
             <p className="flight-num">{disc.turn}</p>
             <p className="flight-num">{disc.fade}</p>
+
             </div>
             <button onClick={()=>{
+                
                 addToBag(disc.id)
+                clickOff()
             }} className="add-to-bag-btn"  >{addToBagTxt}</button>
         </div>
             <div  id="shiny" className={`shiny${i}`} ></div>
@@ -337,9 +352,11 @@ axios.put('http://localhost:4000/addtobag', {discId})
 
         </div>)
     })
-   
-    // console.log(discsMapped)
-  return (<div id="dashboard-comp">
+
+
+
+    
+  return (<div  id="dashboard-comp">
       <Header className="dashboard-header" />
       
       <button id="log-out-btn" onClick={logOut}>Log Out</button>
@@ -350,68 +367,87 @@ axios.put('http://localhost:4000/addtobag', {discId})
         <div className='disc-buttons-container'>
         <button className="disc-buttons" id="brand-specific-dashboard-buttons" onClick={()=>{
             clickOff()
-            document.querySelector('.innova-drop-down-container').style.display = 'unset'
-            document.querySelector('.innova-drop-down').style.display = 'none'
+            document.querySelector('.innova-drop-down-container').style.display = 'flex'
+            // document.querySelector('.innova-drop-down').style.display = 'none'
         }} className='innova-drop-down'>Innova</button>
         <button className="disc-buttons" id="brand-specific-dashboard-buttons" onClick={()=>{
                 clickOff()
-            document.querySelector('.discraft-drop-down-container').style.display = 'unset'
-            document.querySelector('.discraft-drop-down').style.display = 'none'
+            document.querySelector('.discraft-drop-down-container').style.display = 'flex'
+            // document.querySelector('.discraft-drop-down').style.display = 'none'
         }} className='discraft-drop-down'>Discraft</button>
         <button className="disc-buttons" id="brand-specific-dashboard-buttons" onClick={()=>{
                 clickOff()
-            document.querySelector('.discmania-drop-down-container').style.display = 'unset'
-            document.querySelector('.discmania-drop-down').style.display = 'none'
+            document.querySelector('.discmania-drop-down-container').style.display = 'flex'
+            // document.querySelector('.discmania-drop-down').style.display = 'none'
         }} className='discmania-drop-down'>Discmania</button>
         <button className="disc-buttons" id="brand-specific-dashboard-buttons" onClick={()=>{
                 clickOff()
-            document.querySelector('.westside-drop-down-container').style.display = 'unset'
-            document.querySelector('.westside-drop-down').style.display = 'none'
+            document.querySelector('.westside-drop-down-container').style.display = 'flex'
+            // document.querySelector('.westside-drop-down').style.display = 'none'
         }} className='westside-drop-down'>Westside</button>
         <button className="disc-buttons" id="brand-specific-dashboard-buttons" onClick={()=>{
                 clickOff()
-            document.querySelector('.all-drop-down-container').style.display = 'unset'
-            document.querySelector('.all-drop-down').style.display = 'none'
+            document.querySelector('.all-drop-down-container').style.display = 'flex'
+            // document.querySelector('.all-drop-down').style.display = 'none'
         }} className='all-drop-down'>All Discs</button>
-        <button className="disc-buttons" id="dashboard-buttons" onClick={myBag}>My Bag</button>
-        <button className="disc-buttons" id="dashboard-buttons" onClick={getRandomDisc}>Get Random Disc</button>
-        <button className="disc-buttons" id="dashboard-buttons" onClick={clearDiscs}>Clear Discs</button>
+        <button className="disc-buttons" id="dashboard-buttons" onClick={()=>{
+            myBag()
+            clickOff()
+        }}>My Bag</button>
+        
+        <button className="disc-buttons random-pack" id="dashboard-buttons" onClick={()=>{
+            getRandomPack()
+            clickOff()
+        }}>Get Random<br/> Players Pack</button>
+        <button className="disc-buttons" id="dashboard-buttons" onClick={()=>{
+            getRandomDisc()
+            clickOff()
+        }}>Get Random Disc</button>
+        <button className="disc-buttons" id="dashboard-buttons" onClick={()=>{
+            clearDiscs()
+            clickOff()
+        }}>Clear Discs</button>
+
+
         </div>
+
+        
         <div className='disc-drop-down-container'>
         <div className='innova-drop-down-container'>
-        <button id="brand-specific-buttons"  onClick={getAllInnovaDiscs}>Get All Innova Discs</button>
-        <button id="brand-specific-buttons"  onClick={getAllInnovaDrivers}>Get All Innova Drivers</button>
-        <button id="brand-specific-buttons"  onClick={getAllInnovaFairways}>Get All Innova Fairways</button>
-        <button id="brand-specific-buttons"  onClick={getAllInnovaMidranges}>Get All Innova Midranges</button>
-        <button id="brand-specific-buttons"  onClick={getAllInnovaPutters}>Get All Innova Putters</button>
+        <button id="brand-specific-buttons"  onClick={getAllInnovaDiscs}>All Innova Discs</button>
+        <button id="brand-specific-buttons"  onClick={getAllInnovaDrivers}>Innova Drivers</button>
+        <button id="brand-specific-buttons"  onClick={getAllInnovaFairways}>Innova Fairways</button>
+        <button id="brand-specific-buttons"  onClick={getAllInnovaMidranges}>Innova Midranges</button>
+        <button id="brand-specific-buttons"  onClick={getAllInnovaPutters}>Innova Putters</button>
         </div>
         <div className='discraft-drop-down-container'>
-        <button id="brand-specific-buttons"  onClick={getAllDiscraftDiscs}>Get All Discraft Discs</button>
-        <button id="brand-specific-buttons"  onClick={getAllDiscraftDrivers}>Get All Discraft Drivers</button>
-        <button id="brand-specific-buttons"  onClick={getAllDiscraftFairways}>Get All Discraft Fairways</button>
-        <button id="brand-specific-buttons"  onClick={getAllDiscraftMidranges}>Get All Discraft Midranges</button>
-        <button id="brand-specific-buttons"  onClick={getAllDiscraftPutters}>Get All Discraft Putters</button>
+        <button id="brand-specific-buttons"  onClick={getAllDiscraftDiscs}>All Discraft Discs</button>
+        <button id="brand-specific-buttons"  onClick={getAllDiscraftDrivers}>Discraft Drivers</button>
+        <button id="brand-specific-buttons"  onClick={getAllDiscraftFairways}>Discraft Fairways</button>
+        <button id="brand-specific-buttons"  onClick={getAllDiscraftMidranges}>Discraft Midranges</button>
+        <button id="brand-specific-buttons"  onClick={getAllDiscraftPutters}>Discraft Putters</button>
         </div>
         <div className='discmania-drop-down-container'>
-        <button id="brand-specific-buttons"  onClick={getAllDiscmaniaDiscs}>Get All Discmania Discs</button>
-        <button id="brand-specific-buttons"  onClick={getAllDiscmaniaDrivers}>Get All Discmania Drivers</button>
-        <button id="brand-specific-buttons"  onClick={getAllDiscmaniaFairways}>Get All Discmania Fairways</button>
-        <button id="brand-specific-buttons"  onClick={getAllDiscmaniaMidranges}>Get All Discmania Midranges</button>
-        <button id="brand-specific-buttons"  onClick={getAllDiscmaniaPutters}>Get All Discmania Putters</button>
+        <button id="brand-specific-buttons"  onClick={getAllDiscmaniaDiscs}>All Discmania Discs</button>
+        <button id="brand-specific-buttons"  onClick={getAllDiscmaniaDrivers}>Discmania Drivers</button>
+        <button id="brand-specific-buttons"  onClick={getAllDiscmaniaFairways}>Discmania Fairways</button>
+        <button id="brand-specific-buttons"  onClick={getAllDiscmaniaMidranges}>Discmania Midranges</button>
+        <button id="brand-specific-buttons"  onClick={getAllDiscmaniaPutters}>Discmania Putters</button>
         </div>
         <div className='westside-drop-down-container'>
-        <button id="brand-specific-buttons"  onClick={getAllWestsideDiscs}>Get All Westside Discs</button>
-        <button id="brand-specific-buttons"  onClick={getAllWestsideDrivers}>Get All Westside Drivers</button>
-        <button id="brand-specific-buttons"  onClick={getAllWestsideFairways}>Get All Westside Fairways</button>
-        <button id="brand-specific-buttons"  onClick={getAllWestsideMidranges}>Get All Westside Midranges</button>
-        <button id="brand-specific-buttons"  onClick={getAllWestsidePutters}>Get All Westside Putters</button>
+        <button id="brand-specific-buttons"  onClick={getAllWestsideDiscs}>All Westside Discs</button>
+        <button id="brand-specific-buttons"  onClick={getAllWestsideDrivers}>Westside Drivers</button>
+        <button id="brand-specific-buttons"  onClick={getAllWestsideFairways}>Westside Fairways</button>
+        <button id="brand-specific-buttons"  onClick={getAllWestsideMidranges}>Westside Midranges</button>
+        <button id="brand-specific-buttons"  onClick={getAllWestsidePutters}>Westside Putters</button>
         </div>
         <div className='all-drop-down-container'>
-        <button id="brand-specific-buttons"  onClick={getAllDiscs}>Get All Discs</button>
-        <button id="brand-specific-buttons"  onClick={getAllDrivers}>Get All Drivers</button>
-        <button id="brand-specific-buttons"  onClick={getAllFairways}>Get All Fairways</button>
-        <button id="brand-specific-buttons"  onClick={getAllMidranges}>Get All Midranges</button>
-        <button id="brand-specific-buttons"  onClick={getAllPutters}>Get All Putters</button>
+        <button id="brand-specific-buttons"  onClick={getAllDiscs}>All Discs</button>
+        <button id="brand-specific-buttons"  onClick={getAllDrivers}>All Drivers</button>
+        <button id="brand-specific-buttons"  onClick={getAllFairways}>All Fairways</button>
+        <button id="brand-specific-buttons"  onClick={getAllMidranges}>All Midranges</button>
+        <button id="brand-specific-buttons"  onClick={getAllPutters}>All Putters</button>
+        
         </div>
         </div>
          
@@ -420,6 +456,11 @@ axios.put('http://localhost:4000/addtobag', {discId})
       
       
       <div className="disc-container">{discsMapped}</div>
+      <div className='info'>
+            {/* <h2 className='info-header'>References</h2> */}
+            
+      </div>
+      <footer></footer>
   </div>);
 }
 
